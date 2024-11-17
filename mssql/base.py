@@ -16,8 +16,8 @@ from django.core.exceptions import ImproperlyConfigured
 from django.utils.functional import cached_property
 
 try:
-    import pyodbc as Database
-	Database.native_uuid = True
+    import pyodbc as Database    
+    Database.native_uuid = True
 except ImportError as e:
     raise ImproperlyConfigured("Error loading pyodbc module: %s" % e)
 
