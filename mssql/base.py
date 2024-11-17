@@ -17,6 +17,7 @@ from django.utils.functional import cached_property
 
 try:
     import pyodbc as Database
+	Database.native_uuid = True
 except ImportError as e:
     raise ImproperlyConfigured("Error loading pyodbc module: %s" % e)
 
@@ -104,7 +105,7 @@ class DatabaseWrapper(BaseDatabaseWrapper):
         'BigIntegerField': 'bigint',
         'BinaryField': 'varbinary(%(max_length)s)',
         'BooleanField': 'bit',
-        'CharField': 'nvarchar(%(max_length)s)',
+        'CharField': 'varchar(%(max_length)s)',
         'DateField': 'date',
         'DateTimeField': 'datetime2',
         'DecimalField': 'numeric(%(max_digits)s, %(decimal_places)s)',
@@ -126,7 +127,7 @@ class DatabaseWrapper(BaseDatabaseWrapper):
         'SmallIntegerField': 'smallint',
         'TextField': 'nvarchar(max)',
         'TimeField': 'time',
-        'UUIDField': 'char(32)',
+        'UUIDField': 'uniqueidentifier',
     }
     data_types_suffix = {
         'AutoField': 'IDENTITY (1, 1)',

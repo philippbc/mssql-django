@@ -127,11 +127,6 @@ class DatabaseOperations(BaseDatabaseOperations):
             value = float(value)
         return value
 
-    def convert_uuidfield_value(self, value, expression, connection):
-        if value is not None:
-            value = uuid.UUID(value)
-        return value
-
     def convert_booleanfield_value(self, value, expression, connection):
         return bool(value) if value in (0, 1) else value
 
