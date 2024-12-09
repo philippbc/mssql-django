@@ -105,7 +105,7 @@ class DatabaseWrapper(BaseDatabaseWrapper):
         'BigIntegerField': 'bigint',
         'BinaryField': 'varbinary(%(max_length)s)',
         'BooleanField': 'bit',
-        'CharField': 'varchar(%(max_length)s)',
+        'CharField': 'nvarchar(%(max_length)s)',
         'DateField': 'date',
         'DateTimeField': 'datetime2',
         'DecimalField': 'numeric(%(max_digits)s, %(decimal_places)s)',
