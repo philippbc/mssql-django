@@ -2,7 +2,6 @@
 # Licensed under the BSD license.
 
 import datetime
-import uuid
 import warnings
 import sys
 
@@ -149,11 +148,6 @@ class DatabaseOperations(BaseDatabaseOperations):
     def convert_floatfield_value(self, value, expression, connection):
         if value is not None:
             value = float(value)
-        return value
-
-    def convert_uuidfield_value(self, value, expression, connection):
-        if value is not None:
-            value = uuid.UUID(value)
         return value
 
     def convert_booleanfield_value(self, value, expression, connection):
@@ -350,8 +344,6 @@ class DatabaseOperations(BaseDatabaseOperations):
             converters.append(self.convert_datetimefield_value)
         elif internal_type == 'FloatField':
             converters.append(self.convert_floatfield_value)
-        elif internal_type == 'UUIDField':
-            converters.append(self.convert_uuidfield_value)
         elif internal_type in ('BooleanField', 'NullBooleanField'):
             converters.append(self.convert_booleanfield_value)
         return converters
